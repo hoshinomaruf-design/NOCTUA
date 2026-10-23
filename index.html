@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#09090d">
+<title>NOCTUA — Anime & Manga Atlas</title>
+<style>
+:root{--bg:#09090d;--panel:#111118;--panel2:#171721;--line:#282836;--text:#f3f1fa;--muted:#a4a1b4;--accent:#b49aff;--accent2:#7f66d8;--good:#86e2bd;--warn:#f0c98a;--radius:18px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 80% -10%,#282044 0,transparent 35%),var(--bg);color:var(--text);font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh}
+button,input,select{font:inherit}button{cursor:pointer}a{color:inherit}.wrap{max-width:1400px;margin:auto;padding:0 24px}.topbar{position:sticky;top:0;z-index:10;background:#09090de8;backdrop-filter:blur(18px);border-bottom:1px solid #242330}.nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:.19em;font-size:16px}.moon{width:34px;height:34px;border-radius:12px;background:linear-gradient(145deg,#c7b2ff,#7556c7);display:grid;place-items:center;color:#100c1d;font-size:19px;box-shadow:0 0 30px #8e6fe344}.navright{color:var(--muted);font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.hero{padding:58px 0 30px;display:grid;grid-template-columns:1.25fr .75fr;gap:30px;align-items:end}.eyebrow{color:var(--accent);text-transform:uppercase;letter-spacing:.2em;font-size:11px;font-weight:700}.hero h1{font-size:clamp(38px,7vw,76px);line-height:.99;letter-spacing:-.055em;margin:16px 0}.hero h1 span{color:var(--accent)}.hero p{max-width:620px;color:var(--muted);font-size:16px}.hero-art{min-height:210px;border:1px solid #3b3158;border-radius:24px;background:linear-gradient(130deg,#1a1727,#17121e 50%,#2a2040);position:relative;overflow:hidden;padding:25px;display:flex;flex-direction:column;justify-content:end}.hero-art:before{content:"";position:absolute;width:230px;height:230px;border-radius:50%;border:1px solid #b49aff33;right:-20px;top:-60px;box-shadow:0 0 0 24px #b49aff08,0 0 0 48px #b49aff05}.hero-art:after{content:"☾";position:absolute;font-size:180px;right:25px;top:-27px;color:#c4b0ff;opacity:.12}.art-kicker,.art-title{position:relative;z-index:1}.art-kicker{font-size:10px;letter-spacing:.2em;color:#c5b4ff}.art-title{font-size:25px;letter-spacing:-.04em;font-weight:700;margin-top:5px}
+.searchbar{display:flex;gap:10px;margin:20px 0 15px}.searchbox{display:flex;align-items:center;gap:10px;flex:1;background:#13131c;border:1px solid #343142;border-radius:14px;padding:0 16px;min-width:0}.searchbox span{color:var(--accent)}.searchbox input{background:transparent;border:0;outline:0;color:var(--text);width:100%;height:52px;min-width:0}.btn{border:1px solid #3b3452;border-radius:13px;padding:12px 17px;color:#f7f3ff;background:linear-gradient(135deg,#8b70d6,#5d49a5);font-weight:700;white-space:nowrap}.btn.secondary{background:#15151e;border-color:#343142;color:var(--text)}.controls{display:flex;gap:9px;flex-wrap:wrap;align-items:center}.pill{border:1px solid var(--line);border-radius:999px;background:#12121a;color:var(--muted);padding:8px 14px;font-size:12px}.pill.active{background:#28203e;border-color:#8067b8;color:#e6dcff}.filters{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}.filters select{background:#12121a;color:var(--text);border:1px solid var(--line);border-radius:10px;padding:9px 11px;max-width:100%}
+main{padding-bottom:65px}.section{margin-top:43px}.sectionhead{display:flex;justify-content:space-between;align-items:end;gap:14px;margin-bottom:17px}.sectionhead h2{font-size:22px;letter-spacing:-.035em;margin:4px 0 0}.sectionhead p{margin:0;color:var(--muted);font-size:12px}.grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:17px}.card{background:#101018;border:1px solid #252431;border-radius:15px;overflow:hidden;min-width:0;transition:transform .2s,border-color .2s;cursor:pointer}.card:hover{transform:translateY(-4px);border-color:#74629d}.poster{width:100%;aspect-ratio:2/2.85;object-fit:cover;display:block;background:#211b31}.cardbody{padding:11px}.cardtitle{font-size:13px;line-height:1.35;font-weight:700;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:35px}.meta{font-size:11px;color:var(--muted);margin-top:7px;display:flex;justify-content:space-between;gap:5px}.score{color:#d5c4ff;font-weight:800}.empty{grid-column:1/-1;border:1px dashed #393448;border-radius:16px;padding:28px;color:var(--muted);text-align:center}.status{color:var(--muted);font-size:12px;margin:13px 0;min-height:18px}.loadmore{display:flex;justify-content:center;margin-top:22px}.footer{border-top:1px solid #242330;color:#8d899f;font-size:12px;padding:24px 0 38px}.footer strong{color:#c4b1ff}.notice{background:#171421;border:1px solid #3a304d;color:#c8c0d8;padding:12px 14px;border-radius:12px;font-size:12px;margin-top:17px}
+.overlay{position:fixed;inset:0;z-index:30;background:#050509d9;backdrop-filter:blur(8px);display:none;overflow:auto;padding:20px}.overlay.open{display:block}.detail{max-width:1000px;margin:25px auto;background:#101018;border:1px solid #383247;border-radius:22px;overflow:hidden;position:relative}.close{position:absolute;right:15px;top:15px;z-index:2;border:1px solid #55506a;background:#11111bdc;color:white;border-radius:50%;width:42px;height:42px;font-size:23px}.detailhero{display:grid;grid-template-columns:220px 1fr;gap:25px;padding:28px;background:linear-gradient(135deg,#211a32,#11111a 70%)}.detailposter{width:100%;border-radius:13px;aspect-ratio:2/2.9;object-fit:cover;background:#282138}.detail h2{font-size:clamp(26px,4vw,42px);line-height:1.1;letter-spacing:-.04em;margin:10px 0}.native{color:var(--muted);margin:0 0 15px}.chips{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0}.chip{font-size:11px;border:1px solid #3b344c;border-radius:999px;padding:5px 9px;color:#d7c9f9;background:#171420}.ratings{display:flex;gap:10px;flex-wrap:wrap;margin:17px 0}.rating{background:#11111b;border:1px solid #393248;border-radius:12px;padding:10px 13px;min-width:125px}.rating small{display:block;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.12em}.rating b{font-size:20px}.detailcontent{padding:25px 28px}.detailcontent h3{margin:22px 0 8px;font-size:16px}.synopsis{color:#d0ccda;white-space:pre-line}.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.fact{background:#171720;border:1px solid #292735;border-radius:12px;padding:11px}.fact small{display:block;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.1em}.fact div{font-size:13px;margin-top:3px;overflow-wrap:anywhere}.relations{display:flex;flex-wrap:wrap;gap:8px}.relation{border:1px solid #393248;background:#171420;color:#ddd3f5;border-radius:10px;padding:8px 10px;font-size:12px}.detail-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.detail-links a{font-size:12px;text-decoration:none;border:1px solid #383247;padding:9px 12px;border-radius:10px;color:#d4c5ff}
+@media(max-width:1050px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}.hero{grid-template-columns:1fr .75fr}}
+@media(max-width:700px){.wrap{padding:0 15px}.nav{height:61px}.navright{display:none}.hero{grid-template-columns:1fr;padding-top:37px}.hero-art{min-height:145px}.hero-art:after{font-size:135px;top:-27px}.grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.cardbody{padding:8px}.cardtitle{font-size:12px}.meta{font-size:10px}.searchbar{gap:7px}.searchbar .btn{padding:10px 12px}.detailhero{grid-template-columns:105px 1fr;gap:14px;padding:18px}.detailcontent{padding:18px}.facts{grid-template-columns:repeat(2,minmax(0,1fr))}.rating{min-width:100px}.overlay{padding:8px}.detail{margin:8px auto}}
+@media(max-width:370px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.detailhero{grid-template-columns:1fr}.detailposter{width:120px}.hero h1{font-size:39px}}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="wrap nav"><div class="brand"><div class="moon">☾</div><span>NOCTUA</span></div><div class="navright">Anime & Manga Atlas · Independent discovery</div></div></header>
+<div class="wrap">
+<section class="hero">
+  <div><div class="eyebrow">A universe of stories</div><h1>Find your next<br><span>obsession.</span></h1><p>An elegant atlas for anime and manga. Explore series, discover connected seasons, compare scores, and dive into the details.</p>
+  <div class="searchbar"><label class="searchbox"><span>⌕</span><input id="searchInput" placeholder="Search anime, manga, characters..." autocomplete="off" aria-label="Search anime or manga"></label><button class="btn" id="searchBtn">Search</button></div>
+  <div class="controls"><button class="pill active" data-type="ANIME">Anime</button><button class="pill" data-type="MANGA">Manga</button><button class="pill" data-type="ALL">All titles</button></div>
+  <div class="filters"><select id="sortFilter" aria-label="Sort"><option value="TRENDING_DESC">Trending</option><option value="POPULARITY_DESC">Most popular</option><option value="SCORE_DESC">Highest AniList score</option><option value="START_DATE_DESC">Newest first</option></select><select id="formatFilter" aria-label="Format"><option value="">All formats</option><option value="TV">TV</option><option value="TV_SHORT">TV short</option><option value="MOVIE">Movie</option><option value="OVA">OVA</option><option value="ONA">ONA</option><option value="SPECIAL">Special</option><option value="MANGA">Manga</option><option value="NOVEL">Novel</option><option value="ONE_SHOT">One-shot</option></select></div>
+  </div>
+  <div class="hero-art"><div class="art-kicker">YOUR PERSONAL DISCOVERY SPACE</div><div class="art-title">Beyond the watchlist.</div><div style="position:relative;color:#a9a3b9;font-size:12px;margin-top:5px">Stories, worlds, and everything between.</div></div>
+</section>
+<div class="notice">Live database: AniList. MyAnimeList scores are looked up separately when a matching MAL ID is available. Data coverage and scores depend on each source; this site does not invent missing information.</div>
+<main>
+<section class="section"><div class="sectionhead"><div><div class="eyebrow">Explore the catalogue</div><h2 id="sectionTitle">Trending anime</h2></div><p id="countLabel">Live results</p></div><div class="grid" id="resultsGrid"><div class="empty">Connecting to the catalogue…</div></div><div class="status" id="status"></div><div class="loadmore"><button class="btn secondary" id="loadMore" hidden>Load more</button></div></section>
+<section class="section"><div class="sectionhead"><div><div class="eyebrow">Freshly in season</div><h2 id="seasonTitle">This season</h2></div><p>Auto-loaded from AniList</p></div><div class="grid" id="seasonGrid"><div class="empty">Loading seasonal titles…</div></div></section>
+</main>
+<footer class="footer"> <strong>NOCTUA</strong> · A free fan-made discovery prototype. Data is provided by AniList; MAL score lookup uses Jikan when available. Not affiliated with either service. New titles refresh when you load or refresh the page.</footer>
+</div>
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-label="Series details"><div class="detail" id="detailPanel"><button class="close" id="closeDetail" aria-label="Close details">×</button><div class="empty">Loading details…</div></div></div>
+<script>
+const API='https://graphql.anilist.co';
+const $=id=>document.getElementById(id);
+let currentType='ANIME', page=1, lastSearch='', lastItems=[], busy=false;
+const titleOf=m=>m?.title?.english||m?.title?.romaji||m?.title?.native||'Untitled';
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const clean=s=>String(s??'').replace(/<br\s*\/?>/gi,'\n').replace(/<[^>]*>/g,'').replace(/&amp;/g,'&').replace(/&#039;/g,"'");
+const mediaFields=`
+id idMal type format status description(asHtml:false)
+title { romaji english native userPreferred }
+coverImage { extraLarge large medium color }
+bannerImage
+averageScore meanScore popularity favourites
+episodes duration chapters volumes countryOfOrigin source
+season seasonYear startDate { year month day } endDate { year month day }
+genres tags { name rank isMediaSpoiler }
+siteUrl
+studios(isMain:true) { nodes { name } }
+`;
+async function gql(query,variables={}){
+ const r=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({query,variables})});
+ const j=await r.json(); if(!r.ok||j.errors)throw new Error(j.errors?.[0]?.message||`API request failed (${r.status})`); return j.data;
+}
+function seasonNow(){const m=new Date().getMonth()+1;return m<=3?'WINTER':m<=6?'SPRING':m<=9?'SUMMER':'FALL'}
+function seasonYear(){const d=new Date(),m=d.getMonth()+1;return m===12?d.getFullYear()+1:d.getFullYear()}
+function dateStr(d){return d?.year?`${d.year}${d.month?'-'+String(d.month).padStart(2,'0'):''}${d.day?'-'+String(d.day).padStart(2,'0'):''}`:'Not listed'}
+function imageOf(m){return m.coverImage?.extraLarge||m.coverImage?.large||m.coverImage?.medium||''}
+function card(m){
+ const img=imageOf(m), score=m.averageScore?`${(m.averageScore/10).toFixed(1)}`:'—';
+ return `<article class="card" tabindex="0" role="button" aria-label="Open ${esc(titleOf(m))}" data-id="${m.id}" data-type="${m.type}"><img class="poster" loading="lazy" src="${esc(img)}" alt="${esc(titleOf(m))} poster" onerror="this.style.opacity='.25';this.removeAttribute('src')"><div class="cardbody"><div class="cardtitle">${esc(titleOf(m))}</div><div class="meta"><span>${esc(m.format||m.type)}</span><span class="score">★ ${score}</span></div><div class="meta"><span>${esc(m.seasonYear||m.startDate?.year||'Year n/a')}</span><span>${m.episodes?esc(m.episodes)+' eps':m.chapters?esc(m.chapters)+' ch':'—'}</span></div></div></article>`;
+}
+function attachCards(root){root.querySelectorAll('.card').forEach(el=>{const open=()=>openDetail(Number(el.dataset.id),el.dataset.type);el.addEventListener('click',open);el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}})})}
+function setStatus(s){$('status').textContent=s}
+async function loadCatalogue(reset=true){
+ if(busy)return; busy=true;
+ if(reset){page=1;lastItems=[];$('resultsGrid').innerHTML='<div class="empty">Loading titles…</div>'}
+ const search=$('searchInput').value.trim(), sort=$('sortFilter').value, format=$('formatFilter').value;
+ lastSearch=search;
+ $('sectionTitle').textContent=search?`Search: ${search}`:`${currentType==='ALL'?'Anime & Manga':currentType==='ANIME'?'Anime':'Manga'} · ${sort.replaceAll('_DESC','').replaceAll('_',' ').toLowerCase()}`;
+ const types=currentType==='ALL'?['ANIME','MANGA']:[currentType];
+ try{
+  let gathered=[];
+  for(const t of types){
+   const query=`query($page:Int,$search:String,$sort:[MediaSort],$format:MediaFormat){Page(page:$page,perPage:24){pageInfo{hasNextPage currentPage} media(type:${t},search:$search,sort:$sort,format:$format,isAdult:false){${mediaFields}}}}`;
+   const data=await gql(query,{page,search:search||null,sort:[sort],format:format||null});
+   gathered.push(...data.Page.media);
+  }
+  if(currentType==='ALL')gathered.sort((a,b)=>(b.popularity||0)-(a.popularity||0));
+  lastItems=reset?gathered:[...lastItems,...gathered];
+  $('resultsGrid').innerHTML=lastItems.length?lastItems.map(card).join(''):'<div class="empty">No titles found. Try another title or filter.</div>';
+  attachCards($('resultsGrid')); $('countLabel').textContent=`${lastItems.length} shown`;
+  $('loadMore').hidden=!(types.length===1&&gathered.length>=24);
+  setStatus(search?'Search results from AniList.':'Updated from AniList just now.');
+ }catch(e){$('resultsGrid').innerHTML=`<div class="empty">Could not load titles.<br>${esc(e.message)}<br><br>Check your connection and try again.</div>`;setStatus('API may be temporarily unavailable or rate-limited.')}
+ finally{busy=false}
+}
+async function loadSeason(){
+ const season=seasonNow(), year=seasonYear();
+ $('seasonTitle').textContent=`${season[0]+season.slice(1).toLowerCase()} ${year}`;
+ const query=`query($season:MediaSeason,$year:Int){Page(page:1,perPage:12){media(season:$season,seasonYear:$year,type:ANIME,sort:POPULARITY_DESC,isAdult:false){${mediaFields}}}}`;
+ try{const data=await gql(query,{season,year});const items=data.Page.media;$('seasonGrid').innerHTML=items.length?items.map(card).join(''):'<div class="empty">No seasonal titles found for this season.</div>';attachCards($('seasonGrid'))}
+ catch(e){$('seasonGrid').innerHTML=`<div class="empty">Seasonal list unavailable right now.<br>${esc(e.message)}</div>`}
+}
+function fact(label,value){return `<div class="fact"><small>${esc(label)}</small><div>${esc(value||'Not listed')}</div></div>`}
+function relationText(type){return String(type||'RELATED').replaceAll('_',' ')}
+async function loadMalScore(m){
+ const malId=m.idMal;if(!malId)return {score:null,url:null};
+ const kind=m.type==='MANGA'?'manga':'anime';
+ try{const r=await fetch(`https://api.jikan.moe/v4/${kind}/${malId}/full`);if(!r.ok)throw new Error('MAL lookup unavailable');const j=await r.json();return {score:j.data?.score??null,url:j.data?.url||`https://myanimelist.net/${kind}/${malId}`}}
+ catch(e){return {score:null,url:`https://myanimelist.net/${kind}/${malId}`}}
+}
+async function openDetail(id,type){
+ $('overlay').classList.add('open');document.body.style.overflow='hidden';$('detailPanel').innerHTML='<button class="close" id="closeDetail">×</button><div class="empty">Loading full series details…</div>';bindClose();
+ const query=`query($id:Int!){Media(id:$id,type:${type}){${mediaFields}
+ characters(sort:ROLE,perPage:12){edges{role node{name{full native} image{large}}}}
+ staff(sort:RELEVANCE,perPage:12){edges{role node{name{full}}}}
+ relations{edges{relationType node{id type format title{romaji english} coverImage{medium} siteUrl}}}
+ recommendations(sort:RATING,perPage:8){nodes{mediaRecommendation{id type title{romaji english}coverImage{medium}averageScore}}}
+ externalLinks{site url type}
+ }}`;
+ try{
+  const data=await gql(query,{id}),m=data.Media;if(!m)throw new Error('Title not found');
+  const mal=await loadMalScore(m);
+  const rels=(m.relations?.edges||[]).filter(e=>e.node).slice(0,18);
+  const chars=(m.characters?.edges||[]).filter(e=>e.node).slice(0,12);
+  const staff=(m.staff?.edges||[]).filter(e=>e.node).slice(0,12);
+  const genres=(m.genres||[]).map(g=>`<span class="chip">${esc(g)}</span>`).join('');
+  const tags=(m.tags||[]).filter(t=>t.rank>=50&&!t.isMediaSpoiler).slice(0,12).map(t=>`<span class="chip">${esc(t.name)}</span>`).join('');
+  const studios=(m.studios?.nodes||[]).map(s=>s.name).join(', ');
+  const people=chars.map(e=>`<span class="chip">${esc(e.node.name.full)} · ${esc(e.role)}</span>`).join('');
+  const staffHtml=staff.map(e=>`<span class="chip">${esc(e.node.name.full)} — ${esc(e.role)}</span>`).join('');
+  const relations=rels.map(e=>`<button class="relation" data-open-id="${e.node.id}" data-open-type="${e.node.type}">${esc(relationText(e.relationType))}: ${esc(e.node.title.english||e.node.title.romaji||'Related title')}</button>`).join('');
+  const recs=(m.recommendations?.nodes||[]).filter(x=>x.mediaRecommendation).map(x=>x.mediaRecommendation).slice(0,8).map(x=>`<button class="relation" data-open-id="${x.id}" data-open-type="${x.type}">${esc(x.title.english||x.title.romaji||'Recommendation')}</button>`).join('');
+  const external=(m.externalLinks||[]).filter(x=>x.url).slice(0,8).map(x=>`<a href="${esc(x.url)}" target="_blank" rel="noopener noreferrer">${esc(x.site||'External source')}</a>`).join('');
+  const malLink=mal.url|| (m.idMal?`https://myanimelist.net/${type==='MANGA'?'manga':'anime'}/${m.idMal}`:'https://myanimelist.net/');
+  $('detailPanel').innerHTML=`
+  <button class="close" id="closeDetail" aria-label="Close details">×</button>
+  <div class="detailhero"><img class="detailposter" src="${esc(imageOf(m))}" alt="${esc(titleOf(m))} poster"><div>
+   <div class="eyebrow">${esc(m.type)} · ${esc(m.format||'FORMAT N/A')} · ${esc(m.status||'STATUS N/A')}</div>
+   <h2>${esc(titleOf(m))}</h2><p class="native">${esc(m.title.native||m.title.romaji||'')}</p>
+   <div class="chips">${genres}</div>
+   <div class="ratings"><div class="rating"><small>AniList score</small><b>${m.averageScore?`${(m.averageScore/10).toFixed(1)} / 10`:'N/A'}</b></div><div class="rating"><small>MAL score</small><b>${mal.score?`${Number(mal.score).toFixed(2)} / 10`:'N/A'}</b></div><div class="rating"><small>Popularity</small><b>${m.popularity?Number(m.popularity).toLocaleString():'N/A'}</b></div></div>
+   <div class="chips"><span class="chip">Mean score: ${m.meanScore??'N/A'}</span><span class="chip">Favourites: ${m.favourites?Number(m.favourites).toLocaleString():'N/A'}</span></div>
+  </div></div>
+  <div class="detailcontent">
+   <h3>Overview</h3><div class="synopsis">${esc(clean(m.description)||'No synopsis is available for this entry.')}</div>
+   <h3>Series information</h3><div class="facts">
+    ${fact('Native / original title',m.title.native)}${fact('English title',m.title.english)}${fact('Romaji title',m.title.romaji)}
+    ${fact('Release start',dateStr(m.startDate))}${fact('Release end',dateStr(m.endDate))}${fact('Season',m.season?`${m.season} ${m.seasonYear||''}`:'Not listed')}
+    ${fact('Episodes',m.episodes)}${fact('Episode duration',m.duration?`${m.duration} min`:'Not listed')}${fact('Chapters',m.chapters)}
+    ${fact('Volumes',m.volumes)}${fact('Country',m.countryOfOrigin)}${fact('Source material',m.source)}
+    ${fact('Production studio(s)',studios)}${fact('Status',m.status)}${fact('AniList ID',m.id)}${fact('MAL ID',m.idMal)}
+   </div>
+   <h3>Genres</h3><div class="chips">${genres||'Not listed'}</div>
+   <h3>Tags</h3><div class="chips">${tags||'No tags available'}</div>
+   <h3>Related seasons & entries</h3><div class="relations">${relations||'<span class="native">No related entries listed.</span>'}</div>
+   <h3>Main characters</h3><div class="chips">${people||'No character data available'}</div>
+   <h3>Staff</h3><div class="chips">${staffHtml||'No staff data available'}</div>
+   <h3>External links</h3><div class="detail-links"><a href="${esc(m.siteUrl)}" target="_blank" rel="noopener noreferrer">Open on AniList ↗</a><a href="${esc(malLink)}" target="_blank" rel="noopener noreferrer">Open on MyAnimeList ↗</a>${external}</div>
+   <div class="notice">Data availability varies by title. Episode count is not always the same as total franchise episodes; related entries are listed separately. MAL score may be unavailable if no matching MAL ID or the lookup service is temporarily limited.</div>
+  </div>`;
+  bindClose();
+  $('detailPanel').querySelectorAll('[data-open-id]').forEach(b=>b.addEventListener('click',()=>openDetail(Number(b.dataset.openId),b.dataset.openType)));
+ }catch(e){$('detailPanel').innerHTML=`<button class="close" id="closeDetail">×</button><div class="empty">Could not load details.<br>${esc(e.message)}</div>`;bindClose()}
+}
+function bindClose(){const b=$('closeDetail');if(b)b.onclick=closeDetail}
+function closeDetail(){$('overlay').classList.remove('open');document.body.style.overflow=''}
+$('closeDetail').addEventListener('click',closeDetail);
+$('overlay').addEventListener('click',e=>{if(e.target===$('overlay'))closeDetail()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDetail()});
+$('searchBtn').addEventListener('click',()=>loadCatalogue(true));
+$('searchInput').addEventListener('keydown',e=>{if(e.key==='Enter')loadCatalogue(true)});
+$('sortFilter').addEventListener('change',()=>loadCatalogue(true));
+$('formatFilter').addEventListener('change',()=>loadCatalogue(true));
+document.querySelectorAll('[data-type]').forEach(b=>b.addEventListener('click',()=>{currentType=b.dataset.type;document.querySelectorAll('[data-type]').forEach(x=>x.classList.toggle('active',x===b));$('formatFilter').value='';loadCatalogue(true)}));
+$('loadMore').addEventListener('click',()=>{page++;loadCatalogue(false)});
+loadCatalogue(true);loadSeason();
+</script>
+</body>
+</html>
